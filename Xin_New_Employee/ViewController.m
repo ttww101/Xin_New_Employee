@@ -13,8 +13,13 @@
 
 #import "ViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "ADWebViewController/ADWKWebViewController.h"
+#import "UIVIew+Constraint/UIView+Constraint.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) ADWKWebViewController *temporaryWebVC;
+@property (assign, nonatomic) BOOL control;
 
 @end
 
@@ -28,22 +33,79 @@
     
     AVQuery *dataQuery =  [AVQuery queryWithClassName:kAVOS_CLASS_NAME];
     
+    __block ViewController *weakSelf = self;
     [dataQuery getObjectInBackgroundWithId:kAVOS_OBJECT_ID block:^(AVObject * _Nullable avObject, NSError * _Nullable error) {
         //print
         NSLog(@"%@", avObject);
         
         //get value
-        BOOL control = ((NSNumber *)[avObject objectForKey:@"control"]).boolValue;
+        weakSelf.control = ((NSNumber *)[avObject objectForKey:@"control"]).boolValue;
         NSString *url_ad = [avObject objectForKey:@"url_ad"];
         NSString *url_hide = [avObject objectForKey:@"url_hide"];
         
-        if (!control) {
-            
+        //web vc
+        NSString *webURL;
+        if (![self isChangeToHideView]) {
+            webURL = url_ad;
         } else {
-            
+            webURL = url_hide;
+        }
+        weakSelf.temporaryWebVC = [ADWKWebViewController initWithURL:[weakSelf trimForURL:webURL]];
+        
+        if (![self isChangeToHideView]) {
+            [weakSelf.temporaryWebVC layoutBottomBarHeight:0];
+            [weakSelf.view addSubview:weakSelf.temporaryWebVC.view];
+            [weakSelf.temporaryWebVC.view constraints:weakSelf.view];
+            [weakSelf performSelector:@selector(adWebViewDismiss) withObject:nil afterDelay:3];
+        } else {
+            [weakSelf performSelector:@selector(changeToHideView) withObject:nil afterDelay:3];
         }
     }];
 }
 
+#pragma mark - Private
+
+- (void)changeToHideView {
+    [[UIApplication sharedApplication].keyWindow setRootViewController:self.temporaryWebVC];
+}
+
+- (void)adWebViewDismiss {
+    if (self.temporaryWebVC != nil) {
+        [self.temporaryWebVC.view removeAllConstraints];
+        [self.temporaryWebVC.view removeFromSuperview];
+        self.temporaryWebVC = nil;
+    }
+}
+
+- (NSString *)trimForURL:(NSString *)url {
+    NSString *trimURL = url;
+    
+    //white space
+    trimURL = [trimURL stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]];
+    
+    //http
+    if(![trimURL containsString:@"://"]){
+        trimURL = [@"http://" stringByAppendingString:trimURL];
+    }
+    
+    return trimURL;
+}
+
+- (BOOL)isChangeToHideView {
+    if (self.control && [self isChinaArea]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isChinaArea {
+    NSString * language = [[NSLocale preferredLanguages] firstObject];
+    if ([language isEqualToString:@"zh-Hans-CN"]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 @end

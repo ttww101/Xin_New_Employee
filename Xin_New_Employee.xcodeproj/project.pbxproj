@@ -14,6 +14,16 @@
 		947B62BE2248CB9C00A7CFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947B62BD2248CB9C00A7CFCA /* Assets.xcassets */; };
 		947B62C12248CB9C00A7CFCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947B62BF2248CB9C00A7CFCA /* LaunchScreen.storyboard */; };
 		947B62C42248CB9C00A7CFCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62C32248CB9C00A7CFCA /* main.m */; };
+		947B62D92248FA6300A7CFCA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62CD2248FA6300A7CFCA /* Reachability.m */; };
+		947B62DA2248FA6300A7CFCA /* ADWKWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */; };
+		947B62DB2248FA6300A7CFCA /* NoNet.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D12248FA6300A7CFCA /* NoNet.png */; };
+		947B62DC2248FA6300A7CFCA /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D22248FA6300A7CFCA /* aa.png */; };
+		947B62DD2248FA6300A7CFCA /* ee.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D32248FA6300A7CFCA /* ee.png */; };
+		947B62DE2248FA6300A7CFCA /* dd.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D42248FA6300A7CFCA /* dd.png */; };
+		947B62DF2248FA6300A7CFCA /* bb.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D52248FA6300A7CFCA /* bb.png */; };
+		947B62E02248FA6300A7CFCA /* cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D62248FA6300A7CFCA /* cc.png */; };
+		947B62E12248FA6300A7CFCA /* ADWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62D82248FA6300A7CFCA /* ADWKWebViewController.m */; };
+		947B62E52248FA8600A7CFCA /* UIView+Constraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62E32248FA8600A7CFCA /* UIView+Constraint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +40,20 @@
 		947B62C02248CB9C00A7CFCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		947B62C22248CB9C00A7CFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947B62C32248CB9C00A7CFCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		947B62CD2248FA6300A7CFCA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADWKWebViewController.xib; sourceTree = "<group>"; };
+		947B62CF2248FA6300A7CFCA /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
+		947B62D12248FA6300A7CFCA /* NoNet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoNet.png; sourceTree = "<group>"; };
+		947B62D22248FA6300A7CFCA /* aa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aa.png; sourceTree = "<group>"; };
+		947B62D32248FA6300A7CFCA /* ee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ee.png; sourceTree = "<group>"; };
+		947B62D42248FA6300A7CFCA /* dd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dd.png; sourceTree = "<group>"; };
+		947B62D52248FA6300A7CFCA /* bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bb.png; sourceTree = "<group>"; };
+		947B62D62248FA6300A7CFCA /* cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cc.png; sourceTree = "<group>"; };
+		947B62D72248FA6300A7CFCA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		947B62D82248FA6300A7CFCA /* ADWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADWKWebViewController.m; sourceTree = "<group>"; };
+		947B62E32248FA8600A7CFCA /* UIView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Constraint.m"; sourceTree = "<group>"; };
+		947B62E42248FA8600A7CFCA /* UIView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Constraint.h"; sourceTree = "<group>"; };
+		947B62E62248FC1A00A7CFCA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +98,8 @@
 		947B62B32248CB9B00A7CFCA /* Xin_New_Employee */ = {
 			isa = PBXGroup;
 			children = (
+				947B62CC2248FA6300A7CFCA /* ADWebViewController */,
+				947B62E22248FA8600A7CFCA /* UIVIew+Constraint */,
 				947B62B42248CB9B00A7CFCA /* AppDelegate.h */,
 				947B62B52248CB9B00A7CFCA /* AppDelegate.m */,
 				947B62B72248CB9B00A7CFCA /* ViewController.h */,
@@ -87,9 +113,45 @@
 			path = Xin_New_Employee;
 			sourceTree = "<group>";
 		};
+		947B62CC2248FA6300A7CFCA /* ADWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				947B62D02248FA6300A7CFCA /* TabarImage */,
+				947B62D72248FA6300A7CFCA /* Reachability.h */,
+				947B62CD2248FA6300A7CFCA /* Reachability.m */,
+				947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */,
+				947B62CF2248FA6300A7CFCA /* ADWKWebViewController.h */,
+				947B62D82248FA6300A7CFCA /* ADWKWebViewController.m */,
+			);
+			path = ADWebViewController;
+			sourceTree = "<group>";
+		};
+		947B62D02248FA6300A7CFCA /* TabarImage */ = {
+			isa = PBXGroup;
+			children = (
+				947B62D12248FA6300A7CFCA /* NoNet.png */,
+				947B62D22248FA6300A7CFCA /* aa.png */,
+				947B62D32248FA6300A7CFCA /* ee.png */,
+				947B62D42248FA6300A7CFCA /* dd.png */,
+				947B62D52248FA6300A7CFCA /* bb.png */,
+				947B62D62248FA6300A7CFCA /* cc.png */,
+			);
+			path = TabarImage;
+			sourceTree = "<group>";
+		};
+		947B62E22248FA8600A7CFCA /* UIVIew+Constraint */ = {
+			isa = PBXGroup;
+			children = (
+				947B62E32248FA8600A7CFCA /* UIView+Constraint.m */,
+				947B62E42248FA8600A7CFCA /* UIView+Constraint.h */,
+			);
+			path = "UIVIew+Constraint";
+			sourceTree = "<group>";
+		};
 		A4C2678DCDFC5FFF0F94BE59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				947B62E62248FC1A00A7CFCA /* WebKit.framework */,
 				10A8DE25FF4BD028A254DD42 /* libPods-Xin_New_Employee.a */,
 			);
 			name = Frameworks;
@@ -154,8 +216,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947B62DD2248FA6300A7CFCA /* ee.png in Resources */,
+				947B62DE2248FA6300A7CFCA /* dd.png in Resources */,
+				947B62DB2248FA6300A7CFCA /* NoNet.png in Resources */,
+				947B62DC2248FA6300A7CFCA /* aa.png in Resources */,
 				947B62C12248CB9C00A7CFCA /* LaunchScreen.storyboard in Resources */,
+				947B62E02248FA6300A7CFCA /* cc.png in Resources */,
 				947B62BE2248CB9C00A7CFCA /* Assets.xcassets in Resources */,
+				947B62DA2248FA6300A7CFCA /* ADWKWebViewController.xib in Resources */,
+				947B62DF2248FA6300A7CFCA /* bb.png in Resources */,
 				947B62BC2248CB9B00A7CFCA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,8 +276,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				947B62B92248CB9B00A7CFCA /* ViewController.m in Sources */,
+				947B62E12248FA6300A7CFCA /* ADWKWebViewController.m in Sources */,
 				947B62C42248CB9C00A7CFCA /* main.m in Sources */,
+				947B62D92248FA6300A7CFCA /* Reachability.m in Sources */,
 				947B62B62248CB9B00A7CFCA /* AppDelegate.m in Sources */,
+				947B62E52248FA8600A7CFCA /* UIView+Constraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
