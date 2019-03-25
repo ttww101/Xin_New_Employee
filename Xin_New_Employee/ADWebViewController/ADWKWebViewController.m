@@ -1,5 +1,6 @@
 #import "ADWKWebViewController.h"
 #import "Reachability.h"
+#import <AdSupport/AdSupport.h>
 
 @interface ADWKWebViewController ()<WKNavigationDelegate, WKUIDelegate,UIAlertViewDelegate>
 
@@ -59,6 +60,13 @@
     [self listenNetWorkingStatus]; //监听网络是否可用
     
     [self.view addSubview:self.activityIndicatorView];
+    
+    //session storage
+    WKUserContentController *userCC = [WKUserContentController new];
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *js = [NSString stringWithFormat:@"javascript: localStorage.setItem('%@', '%@')", @"idfa", idfa];
+    WKUserScript *userScript = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+    [userCC addUserScript:userScript];
 }
 
 //更新 UI 布局
