@@ -8,6 +8,7 @@
 
 #define kJPushAppKey @"6be4d9e2bbc8b3b9baf99ffc"
 #define kJPushChannel @"Publish channel"
+#define kJPushProduction YES
 
 #import "AppDelegate.h"
 #import "JPUSHService.h"
@@ -40,8 +41,8 @@
     
     [JPUSHService setupWithOption:launchOptions appKey:kJPushAppKey
                           channel:kJPushChannel
-                 apsForProduction:NO
-            advertisingIdentifier: nil];
+                 apsForProduction:kJPushProduction
+            advertisingIdentifier:nil];
     
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
         if(resCode == 0){
