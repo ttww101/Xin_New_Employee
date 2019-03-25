@@ -1,0 +1,41 @@
+PODS:
+  - AVOSCloud (11.5.2)
+  - AVOSCloudIM (11.5.2):
+    - AVOSCloud (= 11.5.2)
+    - AVOSCloudIM/_ARC (= 11.5.2)
+    - AVOSCloudIM/_NOARC (= 11.5.2)
+  - AVOSCloudIM/_ARC (11.5.2):
+    - AVOSCloud (= 11.5.2)
+    - AVOSCloudIM/_NOARC (= 11.5.2)
+  - AVOSCloudIM/_NOARC (11.5.2):
+    - AVOSCloud (= 11.5.2)
+  - JAnalytics (1.2.1):
+    - JCore (~> 1.2.0)
+  - JCore (1.2.6)
+  - JPush (3.1.2):
+    - JCore (~> 1.2.6)
+
+DEPENDENCIES:
+  - AVOSCloud
+  - AVOSCloudIM
+  - JAnalytics
+  - JPush
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AVOSCloud
+    - AVOSCloudIM
+    - JAnalytics
+    - JCore
+    - JPush
+
+SPEC CHECKSUMS:
+  AVOSCloud: b3cb1ed20d46c0d55083363522cb2ea593d51ac7
+  AVOSCloudIM: ede93dc6155c3e73524469f5098a1ec2422915ae
+  JAnalytics: a65f716b383ad470aacd63a7af1984746cc3e06f
+  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
+  JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
+
+PODFILE CHECKSUM: d73a9fdd0d246bccb203cbda64dc44b2788ae3e4
+
+COCOAPODS: 1.5.3
