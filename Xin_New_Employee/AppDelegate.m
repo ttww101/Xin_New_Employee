@@ -6,7 +6,7 @@
 //  Copyright © 2019 Wu. All rights reserved.
 //
 
-#define kJPushAppKey @"6be4d9e2bbc8b3b9baf99ffc"
+#define kJPushAppKey @"edd4c8c74add69d6451fdf28"
 #define kJPushChannel @"Publish channel"
 #define kJPushProduction YES
 
@@ -14,6 +14,9 @@
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 #import "JANALYTICSService.h"
+#import "ADWebViewController/ADWKWebViewController.h"
+#import "NSString+URL/NSString+URL.h"
+#import <AdSupport/AdSupport.h>
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
@@ -39,10 +42,11 @@
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     [JPUSHService setupWithOption:launchOptions appKey:kJPushAppKey
                           channel:kJPushChannel
                  apsForProduction:kJPushProduction
-            advertisingIdentifier:nil];
+            advertisingIdentifier:idfa];
     
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
         if(resCode == 0){
@@ -80,38 +84,53 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    [JPUSHService handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
-}
-
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
-    
-    NSDictionary * userInfo = notification.request.content.userInfo;
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [JPUSHService handleRemoteNotification:userInfo];
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
+    if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //从通知界面直接进入应用
+    }else{
+        //从通知设置界面进入应用
     }
-    
-    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
 }
 
+//背景觸發
 - (void)jpushNotificationCenter :(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     
     NSDictionary * userInfo = response.notification.request.content.userInfo;
-    
+    NSLog(@"%@", userInfo);
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
-        
+        NSString *url = [userInfo objectForKey:@"url"];
+        if (url != nil) {
+            ADWKWebViewController *webVC = [ADWKWebViewController initWithURL:[url trimForURL]];
+            [[UIApplication sharedApplication].keyWindow
+             setRootViewController:webVC];
+        }
     }
     completionHandler();
 }
 
-
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
+//前景觸發
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    NSLog(@"%@", userInfo);
+    if ([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+        
+        completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
+    }
 }
 
+- (void)createNotificationByIdentifier:(NSString *)identifier title:(NSString *)title subTitle:(NSString *)subTitle body:(NSString *)body badge:(NSNumber *)badge delay:(NSTimeInterval)delay completion:(void (^)(NSError *error))completion {
+    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+    content.title = title;
+    content.subtitle = subTitle;
+    content.body = body;
+    content.badge = badge;
+    content.sound = UNNotificationSound.defaultSound;
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:delay repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:completion];
+}
 
 @end

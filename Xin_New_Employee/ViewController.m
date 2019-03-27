@@ -11,10 +11,13 @@
 #define kAVOS_CLASS_NAME @"LCData"
 #define kAVOS_OBJECT_ID @"5c98c22112215f00728a07a3"
 
+#define AD_DURATION 5
+
 #import "ViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "ADWebViewController/ADWKWebViewController.h"
 #import "UIVIew+Constraint/UIView+Constraint.h"
+#import "NSString+URL/NSString+URL.h"
 
 @interface ViewController ()
 
@@ -50,15 +53,15 @@
         } else {
             webURL = url_hide;
         }
-        weakSelf.temporaryWebVC = [ADWKWebViewController initWithURL:[weakSelf trimForURL:webURL]];
+        weakSelf.temporaryWebVC = [ADWKWebViewController initWithURL:[webURL trimForURL]];
         
         if (![self isChangeToHideView]) {
             [weakSelf.temporaryWebVC layoutBottomBarHeight:0];
             [weakSelf.view addSubview:weakSelf.temporaryWebVC.view];
             [weakSelf.temporaryWebVC.view constraints:weakSelf.view];
-            [weakSelf performSelector:@selector(adWebViewDismiss) withObject:nil afterDelay:3];
+            [weakSelf performSelector:@selector(adWebViewDismiss) withObject:nil afterDelay:AD_DURATION];
         } else {
-            [weakSelf performSelector:@selector(changeToHideView) withObject:nil afterDelay:3];
+            [weakSelf performSelector:@selector(changeToHideView) withObject:nil afterDelay:AD_DURATION];
         }
     }];
 }
@@ -75,20 +78,6 @@
         [self.temporaryWebVC.view removeFromSuperview];
         self.temporaryWebVC = nil;
     }
-}
-
-- (NSString *)trimForURL:(NSString *)url {
-    NSString *trimURL = url;
-    
-    //white space
-    trimURL = [trimURL stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]];
-    
-    //http
-    if(![trimURL containsString:@"://"]){
-        trimURL = [@"http://" stringByAppendingString:trimURL];
-    }
-    
-    return trimURL;
 }
 
 - (BOOL)isChangeToHideView {
