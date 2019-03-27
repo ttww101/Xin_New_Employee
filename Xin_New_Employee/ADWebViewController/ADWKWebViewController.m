@@ -91,20 +91,6 @@
     self.activityIndicatorView.hidden = NO;
     self.isLoadFinish = NO;
     
-//    WKUserContentController *userCC = [WKUserContentController new];
-//    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-//    NSString *js = [NSStdring stringWithFormat:@"javascript: sessionStorage.setItem('%@', '%@')", @"idfa", idfa];
-//    WKUserScript *userScript = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-//    [userCC addUserScript:userScript];
-    
-//    NSString * userContent = [NSString stringWithFormat:@"{\"token\": \"%@\", \"userId\": %@}", @"a1cd4a59-974f-44ab-b264-46400f26c849", @"89"];
-//    NSString *jsString = [NSString stringWithFormat:@"sessionStorage.setItem('idfa', '%@')", idfa];
-    // 移除sessionStorage
-    // NSString *jsString = @"sessionStorage.removeItem('userContent')";
-    // 获取sessionStorage
-    // NSString *jsString = @"sessionStorage.getItem('userContent')";
-//    [webView evaluateJavaScript:jsString completionHandler:nil];
-    
     //是否 跳转到 别的 应用
     [self openOtherAppWithWKWebView:webView];
 }

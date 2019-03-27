@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (URL)
 
-+ (NSString *)trimForURL:(NSString *)url;
 - (NSString *)trimForURL;
 
 @end

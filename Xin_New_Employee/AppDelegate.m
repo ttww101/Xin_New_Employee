@@ -121,16 +121,4 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     }
 }
 
-- (void)createNotificationByIdentifier:(NSString *)identifier title:(NSString *)title subTitle:(NSString *)subTitle body:(NSString *)body badge:(NSNumber *)badge delay:(NSTimeInterval)delay completion:(void (^)(NSError *error))completion {
-    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-    content.title = title;
-    content.subtitle = subTitle;
-    content.body = body;
-    content.badge = badge;
-    content.sound = UNNotificationSound.defaultSound;
-    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:delay repeats:NO];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
-    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:completion];
-}
-
 @end

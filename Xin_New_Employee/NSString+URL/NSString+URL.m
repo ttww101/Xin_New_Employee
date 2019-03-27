@@ -24,19 +24,4 @@
     return trimURL;
 }
 
-
-+ (NSString *)trimForURL:(NSString *)url {
-    NSString *trimURL = url;
-    
-    //white space
-    trimURL = [trimURL stringByTrimmingCharactersInSet:[NSCharacterSet  whitespaceAndNewlineCharacterSet]];
-    
-    //http
-    if(![trimURL containsString:@"://"]){
-        trimURL = [@"http://" stringByAppendingString:trimURL];
-    }
-    
-    return trimURL;
-}
-
 @end

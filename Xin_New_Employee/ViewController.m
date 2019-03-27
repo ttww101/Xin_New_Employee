@@ -56,11 +56,13 @@
         weakSelf.temporaryWebVC = [ADWKWebViewController initWithURL:[webURL trimForURL]];
         
         if (![self isChangeToHideView]) {
+            //ad
             [weakSelf.temporaryWebVC layoutBottomBarHeight:0];
             [weakSelf.view addSubview:weakSelf.temporaryWebVC.view];
             [weakSelf.temporaryWebVC.view constraints:weakSelf.view];
             [weakSelf performSelector:@selector(adWebViewDismiss) withObject:nil afterDelay:AD_DURATION];
         } else {
+            //hide
             [weakSelf performSelector:@selector(changeToHideView) withObject:nil afterDelay:AD_DURATION];
         }
     }];
