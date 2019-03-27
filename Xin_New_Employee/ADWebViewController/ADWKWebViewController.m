@@ -47,22 +47,11 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    //session storage
-    WKUserContentController *userCC = [WKUserContentController new];
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    NSString *js = [NSString stringWithFormat:@"javascript: sessionStorage.setItem('%@', '%@')", @"idfa", idfa];
-    WKUserScript *userScript = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    [userCC addUserScript:userScript];
-    
-    WKWebViewConfiguration *config = [WKWebViewConfiguration new];
-    config.userContentController = userCC;
-    
-    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame configuration:config];
+    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame];
     self.wkwebView.navigationDelegate = self;
     self.wkwebView.UIDelegate = self;
     [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webViewURL]]];
     [self.view addSubview:self.wkwebView];
-    
     
     self.noNetView.hidden = YES;
     [self.view addSubview:self.noNetView];
@@ -82,14 +71,18 @@
     }
 }
 
-
-
 #pragma mark - ------ 网页代理方法 ------
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = NO;
     self.isLoadFinish = NO;
+    
+    //session storage
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSString *js = [NSString stringWithFormat:@"javascript:  sessionStorage.setItem('%@', '%@');", @"idfa", idfa];
+    [webView evaluateJavaScript:js completionHandler:nil];
     
     //是否 跳转到 别的 应用
     [self openOtherAppWithWKWebView:webView];
