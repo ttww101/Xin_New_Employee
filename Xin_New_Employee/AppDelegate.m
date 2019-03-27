@@ -43,12 +43,13 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
+//    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [JPUSHService setupWithOption:launchOptions appKey:kJPushAppKey
                           channel:kJPushChannel
                  apsForProduction:kJPushProduction
             advertisingIdentifier:idfa];
     [JPUSHService setAlias:idfa completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
     } seq:0];
     
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
