@@ -47,7 +47,15 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame];
+    //session storage
+    WKWebViewConfiguration *config = [WKWebViewConfiguration new];
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    NSString *js = [NSString stringWithFormat:@"javascript:  sessionStorage.setItem('%@', '%@');", @"idfa", idfa];
+    WKUserScript *script = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
+    [config.userContentController addUserScript:script];
+    
+    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame configuration:config];
     self.wkwebView.navigationDelegate = self;
     self.wkwebView.UIDelegate = self;
     [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webViewURL]]];
@@ -77,12 +85,6 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = NO;
     self.isLoadFinish = NO;
-    
-    //session storage
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    NSString *js = [NSString stringWithFormat:@"javascript:  sessionStorage.setItem('%@', '%@');", @"idfa", idfa];
-    [webView evaluateJavaScript:js completionHandler:nil];
     
     //是否 跳转到 别的 应用
     [self openOtherAppWithWKWebView:webView];
@@ -134,6 +136,7 @@
     self.activityIndicatorView.hidden = YES;
     self.isLoadFinish = YES;
 }
+
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = YES;
