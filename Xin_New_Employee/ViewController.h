@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern BOOL hasNotificationEnterInURL;
+
 @interface ViewController : UIViewController
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		474B039F81F764AE7D60C1C2 /* libPods-Xin_New_Employee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A8DE25FF4BD028A254DD42 /* libPods-Xin_New_Employee.a */; };
 		94305163224B63B3003C99F7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 94305162224B63B3003C99F7 /* README.md */; };
+		9430516D224CB7C7003C99F7 /* hasNotificationEnterInURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9430516C224CB7C7003C99F7 /* hasNotificationEnterInURL.m */; };
 		947B62B62248CB9B00A7CFCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62B52248CB9B00A7CFCA /* AppDelegate.m */; };
 		947B62B92248CB9B00A7CFCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62B82248CB9B00A7CFCA /* ViewController.m */; };
 		947B62BC2248CB9B00A7CFCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947B62BA2248CB9B00A7CFCA /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 		2F35B8918252C898E072C647 /* Pods-Xin_New_Employee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xin_New_Employee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Xin_New_Employee/Pods-Xin_New_Employee.release.xcconfig"; sourceTree = "<group>"; };
 		635D4E68FF2BA3BA3BD8CCDD /* Pods-Xin_New_Employee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xin_New_Employee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Xin_New_Employee/Pods-Xin_New_Employee.debug.xcconfig"; sourceTree = "<group>"; };
 		94305162224B63B3003C99F7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		9430516B224CB780003C99F7 /* hasNotificationEnterInURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hasNotificationEnterInURL.h; sourceTree = "<group>"; };
+		9430516C224CB7C7003C99F7 /* hasNotificationEnterInURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hasNotificationEnterInURL.m; sourceTree = "<group>"; };
 		947B62B12248CB9B00A7CFCA /* Xin_New_Employee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xin_New_Employee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		947B62B42248CB9B00A7CFCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		947B62B52248CB9B00A7CFCA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				947B62C22248CB9C00A7CFCA /* Info.plist */,
 				947B62C32248CB9C00A7CFCA /* main.m */,
 				94305162224B63B3003C99F7 /* README.md */,
+				9430516B224CB780003C99F7 /* hasNotificationEnterInURL.h */,
+				9430516C224CB7C7003C99F7 /* hasNotificationEnterInURL.m */,
 			);
 			path = Xin_New_Employee;
 			sourceTree = "<group>";
@@ -204,7 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = Wu;
+				ORGANIZATIONNAME = amG;
 				TargetAttributes = {
 					947B62B02248CB9B00A7CFCA = {
 						CreatedOnToolsVersion = 10.1;
@@ -302,6 +307,7 @@
 				947B62F1224A1AA600A7CFCA /* NSString+URL.m in Sources */,
 				947B62B92248CB9B00A7CFCA /* ViewController.m in Sources */,
 				947B62E12248FA6300A7CFCA /* ADWKWebViewController.m in Sources */,
+				9430516D224CB7C7003C99F7 /* hasNotificationEnterInURL.m in Sources */,
 				947B62C42248CB9C00A7CFCA /* main.m in Sources */,
 				947B62D92248FA6300A7CFCA /* Reachability.m in Sources */,
 				947B62B62248CB9B00A7CFCA /* AppDelegate.m in Sources */,

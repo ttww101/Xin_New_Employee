@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (hasNotificationEnterInURL) { return; }
+    
     [AVOSCloud setApplicationId:kAVOS_ID clientKey:kAVOS_KEY];
     [AVOSCloud setAllLogsEnabled:YES];
     

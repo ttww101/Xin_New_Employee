@@ -17,6 +17,7 @@
 #import "ADWebViewController/ADWKWebViewController.h"
 #import "NSString+URL/NSString+URL.h"
 #import <AdSupport/AdSupport.h>
+#import "ViewController.h"
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
@@ -26,6 +27,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    hasNotificationEnterInURL = 0;
     
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     if (@available(iOS 12.0, *)) {
@@ -108,6 +111,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
             ADWKWebViewController *webVC = [ADWKWebViewController initWithURL:[url trimForURL]];
             [[UIApplication sharedApplication].keyWindow
              setRootViewController:webVC];
+            hasNotificationEnterInURL = 1;
         }
     }
     completionHandler();
