@@ -1,11 +1,11 @@
 #import "ADWKWebViewController.h"
-#import "Reachability.h"
+#import "ADReachability.h"
 #import <AdSupport/AdSupport.h>
 
 @interface ADWKWebViewController ()<WKNavigationDelegate, WKUIDelegate,UIAlertViewDelegate>
 
-@property (nonatomic) Reachability *hostReachability;//域名检查
-@property (nonatomic) Reachability *internetReachability;//网络检查
+@property (nonatomic) ADReachability *hostReachability;//域名检查
+@property (nonatomic) ADReachability *internetReachability;//网络检查
 
 @property (assign, nonatomic) BOOL isLoadFinish;//是否加载完成
 @property (assign, nonatomic) BOOL isLandscape;//是否横屏
@@ -232,7 +232,7 @@
 
 //检查网络
 -(void)checkNetwork{
-    self.hostReachability = [Reachability reachabilityWithHostName:@"www.baidu.com"];
+    self.hostReachability = [ADReachability reachabilityWithHostName:@"www.baidu.com"];
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
 }
@@ -240,15 +240,15 @@
 
 //监听 网络状态
 -(void)listenNetWorkingStatus{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kADReachabilityChangedNotification object:nil];
     // 设置网络检测的站点
     NSString *remoteHostName = @"www.apple.com";
     
-    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    self.hostReachability = [ADReachability reachabilityWithHostName:remoteHostName];
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
     
-    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    self.internetReachability = [ADReachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     [self updateInterfaceWithReachability:self.internetReachability];
 }
@@ -256,15 +256,15 @@
 //网络状态 通知事件
 - (void) reachabilityChanged:(NSNotification *)note
 {
-    Reachability* curReach = [note object];
+    ADReachability* curReach = [note object];
     [self updateInterfaceWithReachability:curReach];
 }
 
 //当前网络类型
-- (void)updateInterfaceWithReachability:(Reachability *)reachability
+- (void)updateInterfaceWithReachability:(ADReachability *)reachability
 {
     
-    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    ADNetworkStatus netStatus = [reachability currentReachabilityStatus];
     switch (netStatus) {
         case 0://无网络
             if (!self.isLoadFinish) {

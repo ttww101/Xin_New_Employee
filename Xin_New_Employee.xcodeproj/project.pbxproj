@@ -16,7 +16,7 @@
 		947B62BE2248CB9C00A7CFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947B62BD2248CB9C00A7CFCA /* Assets.xcassets */; };
 		947B62C12248CB9C00A7CFCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947B62BF2248CB9C00A7CFCA /* LaunchScreen.storyboard */; };
 		947B62C42248CB9C00A7CFCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62C32248CB9C00A7CFCA /* main.m */; };
-		947B62D92248FA6300A7CFCA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62CD2248FA6300A7CFCA /* Reachability.m */; };
+		947B62D92248FA6300A7CFCA /* ADReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B62CD2248FA6300A7CFCA /* ADReachability.m */; };
 		947B62DA2248FA6300A7CFCA /* ADWKWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */; };
 		947B62DB2248FA6300A7CFCA /* NoNet.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D12248FA6300A7CFCA /* NoNet.png */; };
 		947B62DC2248FA6300A7CFCA /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = 947B62D22248FA6300A7CFCA /* aa.png */; };
@@ -46,7 +46,7 @@
 		947B62C02248CB9C00A7CFCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		947B62C22248CB9C00A7CFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947B62C32248CB9C00A7CFCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		947B62CD2248FA6300A7CFCA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		947B62CD2248FA6300A7CFCA /* ADReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADReachability.m; sourceTree = "<group>"; };
 		947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADWKWebViewController.xib; sourceTree = "<group>"; };
 		947B62CF2248FA6300A7CFCA /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
 		947B62D12248FA6300A7CFCA /* NoNet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoNet.png; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		947B62D42248FA6300A7CFCA /* dd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dd.png; sourceTree = "<group>"; };
 		947B62D52248FA6300A7CFCA /* bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bb.png; sourceTree = "<group>"; };
 		947B62D62248FA6300A7CFCA /* cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cc.png; sourceTree = "<group>"; };
-		947B62D72248FA6300A7CFCA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		947B62D72248FA6300A7CFCA /* ADReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADReachability.h; sourceTree = "<group>"; };
 		947B62D82248FA6300A7CFCA /* ADWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADWKWebViewController.m; sourceTree = "<group>"; };
 		947B62E32248FA8600A7CFCA /* UIView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Constraint.m"; sourceTree = "<group>"; };
 		947B62E42248FA8600A7CFCA /* UIView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Constraint.h"; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				947B62D02248FA6300A7CFCA /* TabarImage */,
-				947B62D72248FA6300A7CFCA /* Reachability.h */,
-				947B62CD2248FA6300A7CFCA /* Reachability.m */,
+				947B62D72248FA6300A7CFCA /* ADReachability.h */,
+				947B62CD2248FA6300A7CFCA /* ADReachability.m */,
 				947B62CE2248FA6300A7CFCA /* ADWKWebViewController.xib */,
 				947B62CF2248FA6300A7CFCA /* ADWKWebViewController.h */,
 				947B62D82248FA6300A7CFCA /* ADWKWebViewController.m */,
@@ -309,7 +309,7 @@
 				947B62E12248FA6300A7CFCA /* ADWKWebViewController.m in Sources */,
 				9430516D224CB7C7003C99F7 /* hasNotificationEnterInURL.m in Sources */,
 				947B62C42248CB9C00A7CFCA /* main.m in Sources */,
-				947B62D92248FA6300A7CFCA /* Reachability.m in Sources */,
+				947B62D92248FA6300A7CFCA /* ADReachability.m in Sources */,
 				947B62B62248CB9B00A7CFCA /* AppDelegate.m in Sources */,
 				947B62E52248FA8600A7CFCA /* UIView+Constraint.m in Sources */,
 			);
