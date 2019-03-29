@@ -47,7 +47,6 @@
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-//    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [JPUSHService setupWithOption:launchOptions appKey:kJPushAppKey
                           channel:kJPushChannel
                  apsForProduction:kJPushProduction
