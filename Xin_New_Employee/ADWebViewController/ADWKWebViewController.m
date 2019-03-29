@@ -38,6 +38,10 @@
     return adWKWebViewController;
 }
 
+- (void)loadURL:(NSString *)url {
+    [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {

@@ -18,6 +18,7 @@
 #import "NSString+URL/NSString+URL.h"
 #import <AdSupport/AdSupport.h>
 #import "ViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
@@ -104,15 +105,56 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     NSLog(@"%@", userInfo);
-    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
-        NSString *url = [userInfo objectForKey:@"url"];
-        if (url != nil) {
-            ADWKWebViewController *webVC = [ADWKWebViewController initWithURL:[url trimForURL]];
-            [[UIApplication sharedApplication].keyWindow
-             setRootViewController:webVC];
-            hasNotificationEnterInURL = 1;
-        }
+        [AVOSCloud setApplicationId:kAVOS_ID clientKey:kAVOS_KEY];
+        [AVOSCloud setAllLogsEnabled:YES];
+        
+        AVQuery *dataQuery =  [AVQuery queryWithClassName:kAVOS_CLASS_NAME];
+        
+        [dataQuery getObjectInBackgroundWithId:kAVOS_OBJECT_ID block:^(AVObject * _Nullable avObject, NSError * _Nullable error) {
+            //print
+            NSLog(@"%@", avObject);
+            
+            //get value
+            BOOL control = ((NSNumber *)[avObject objectForKey:@"control"]).boolValue;
+            NSString *url_home = [avObject objectForKey:@"url_hide"];
+            NSString *url_push = [userInfo objectForKey:@"url"];
+            
+            //distinguish route ways
+            if (control) {
+                
+                ADWKWebViewController *webVC = [ADWKWebViewController initWithURL:[url_home trimForURL]];
+                
+                //has push url
+                if (url_push != nil) {
+                    [webVC loadURL:[url_push trimForURL]];
+                } //or nothing
+                
+                [[UIApplication sharedApplication].delegate.window setRootViewController:webVC];
+                
+                hasNotificationEnterInURL = 1;
+                
+            } else { //control == false
+                
+                if (url_push != nil) { //load url & dismiss
+                    
+                    ADWKWebViewController *webVC = [ADWKWebViewController initWithURL:[url_push trimForURL]];
+                    [webVC layoutBottomBarHeight:0];
+                    UIViewController *vc = [UIApplication sharedApplication].delegate.window.rootViewController;
+                    [vc presentViewController:webVC animated:YES completion:^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [webVC dismissViewControllerAnimated:YES completion:nil];
+                        });
+                    }];
+                    
+                } else {
+                    //do nothing
+                }
+                
+                hasNotificationEnterInURL = 0;
+            }
+        }];
     }
     completionHandler();
 }

@@ -8,4 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
+///no need for further route way
 BOOL hasNotificationEnterInURL = 0;

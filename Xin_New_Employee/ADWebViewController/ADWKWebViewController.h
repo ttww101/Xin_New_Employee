@@ -15,5 +15,6 @@
 
 + (instancetype)initWithURL:(NSString *)urlString;
 - (void)layoutBottomBarHeight:(CGFloat)height;
+- (void)loadURL:(NSString *)url;
 
 @end
