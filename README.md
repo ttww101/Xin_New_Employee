@@ -1,7 +1,7 @@
 # Xin_New_Employee
 ### project for new employee in Xin
 
-#### Pod file:
+### Pod file:
 <ol>
 <li>pod 'AVOSCloud'</li>
 <li>pod 'AVOSCloudIM'</li>
@@ -9,10 +9,11 @@
 <li>pod 'JAnalytics'</li>
 </ol>
 
-##### 極光推送
-##### Lean Cloud 開關
-##### Session Storage
-##### idfa
+### Functions:
+- [ ]  Notifiction (推播)
+- [ ]  Lean Cloud 
+- [ ]  Session Storage
+- [ ]  idfa
 
 ### Supporting Files:
 #### .gitignore 
